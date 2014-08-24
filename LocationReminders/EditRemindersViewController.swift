@@ -11,9 +11,9 @@ import CoreData
 
 class EditRemindersViewController: UIViewController, UITextFieldDelegate {
     
-//    var context : NSManagedObjectContext!
+    var context : NSManagedObjectContext!
     //    var reminder = Reminder()
-    var context = MapViewController().context
+//    var context = MapViewController().context
     
     @IBOutlet weak var coordinatesLabel: UILabel!
     @IBOutlet weak var reminderTitleTextField: UITextField!
@@ -37,7 +37,7 @@ class EditRemindersViewController: UIViewController, UITextFieldDelegate {
         self.coordinatesLabel.text = ("(" + reminders.valueForKeyPath("latitude").stringValue + ", " + reminders.valueForKeyPath("longitude").stringValue + ")") as String
         self.reminderTitleTextField.text = reminders.valueForKeyPath("reminder") as String
         
-//        println(self.coordinatesLabel.text)
+        println(self.coordinatesLabel.text)
         println(self.reminderTitleTextField.text)
         println(reminder.count)
     }
@@ -50,13 +50,19 @@ class EditRemindersViewController: UIViewController, UITextFieldDelegate {
         
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.context = appDelegate.managedObjectContext
+
+        var request = NSFetchRequest(entityName: "Reminder")
+        request.returnsObjectsAsFaults = false
+        
+        var reminder : NSArray = context.executeFetchRequest(request, error: nil)
+        
+        var reminders = reminder[0] as NSManagedObject
         
         var editReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
         editReminder.reminder = self.reminderTitleTextField.text
-        
-        //        editReminder.setValue(self.reminderTitleTextField.text, forKey: "reminderTitle")
-        //        editReminder.setValue(self.reminderMessageTextField.text, forKey: "reminderMessage")
-        
+        editReminder.latitude = reminders.valueForKeyPath("latitude") as NSNumber
+        editReminder.longitude = reminders.valueForKeyPath("longitude") as NSNumber
+            
         var error : NSError?
         self.context.save(&error)
         

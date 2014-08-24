@@ -43,8 +43,8 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
             println("restricted")
         }
         
-        //        var location = CLLocationCoordinate2D(latitude: locationManager.location.coordinate.latitude, longitude: locationManager.location.coordinate.longitude)
-        //        self.mapView.region = MKCoordinateRegionMakeWithDistance(location, 1000, 1000)
+//        var location = CLLocationCoordinate2D(latitude: locationManager.location.coordinate.latitude, longitude: locationManager.location.coordinate.longitude)
+//        self.mapView.region = MKCoordinateRegionMakeWithDistance(location, 1000, 1000)
         
         self.latitudeTextField.delegate = self
         self.longitudeTextField.delegate = self
@@ -115,7 +115,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
             var annotation = MKPointAnnotation()
             annotation.coordinate = touchCoordinate
             annotation.title = "Add Reminder"
-            annotation.subtitle = "Message"
             self.mapView.addAnnotation(annotation)
         case .Changed:
             println("changed")
@@ -194,13 +193,17 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         var newReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
         newReminder.latitude = annotation.coordinate.latitude
         newReminder.longitude = annotation.coordinate.longitude
-        newReminder.reminder = annotation.title!
+//        if annotation.title! != "Add Reminder" {
+//            newReminder.reminder = Reminder.valueForKeyPath("reminder") as String
+//        } else {
+            newReminder.reminder = annotation.title!
+//        }
         
         println("annLat: \(newReminder.latitude)")
         println("annLong: \(newReminder.longitude)")
         println("annTitle: \(newReminder.reminder)")
         
-        context.save(nil)
+//        context.save(nil)
         
         self.performSegueWithIdentifier("ToEditReminder", sender: self)
     }

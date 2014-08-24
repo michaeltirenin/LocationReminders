@@ -28,7 +28,7 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         
         // setup the fetched results controller
         var request = NSFetchRequest(entityName: "Reminder")
-        let sort = NSSortDescriptor(key: "message", ascending: true)
+        let sort = NSSortDescriptor(key: "reminder", ascending: true)
         
         // add sort to the request
         request.sortDescriptors = [sort]
