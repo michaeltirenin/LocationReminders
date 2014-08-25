@@ -54,8 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2875E6C19A97488009BD639 /* CoreData.framework in Frameworks */,
 				F2875E6719A9593F009BD639 /* MapKit.framework in Frameworks */,
+				F2875E6C19A97488009BD639 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +204,11 @@
 				TargetAttributes = {
 					F2875E3919A95706009BD639 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					F2875E4E19A95707009BD639 = {
 						CreatedOnToolsVersion = 6.0;
@@ -254,12 +259,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2875E6319A95769009BD639 /* RemindersViewController.swift in Sources */,
 				F2875E4519A95706009BD639 /* MapViewController.swift in Sources */,
 				F2875E4319A95706009BD639 /* LocationReminders.xcdatamodeld in Sources */,
+				F2875E4019A95706009BD639 /* AppDelegate.swift in Sources */,
 				F2875E6A19A9606F009BD639 /* Reminder.swift in Sources */,
 				F2875E6519A9577C009BD639 /* EditRemindersViewController.swift in Sources */,
-				F2875E4019A95706009BD639 /* AppDelegate.swift in Sources */,
+				F2875E6319A95769009BD639 /* RemindersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +384,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LocationReminders/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LocationReminders/LocationReminders-Bridging-Header.h";
@@ -394,7 +399,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LocationReminders/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LocationReminders/LocationReminders-Bridging-Header.h";
@@ -454,6 +459,7 @@
 				F2875E5B19A95707009BD639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2875E5C19A95707009BD639 /* Build configuration list for PBXNativeTarget "LocationRemindersTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +468,7 @@
 				F2875E5E19A95707009BD639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

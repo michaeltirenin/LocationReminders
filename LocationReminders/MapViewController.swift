@@ -32,12 +32,12 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         case .Authorized, .AuthorizedWhenInUse:
             println("authorized (even when in use)")
             self.mapView.showsUserLocation = true
-            //            self.locationManager.startUpdatingLocation()
+//            self.locationManager.startUpdatingLocation()
         case .Denied:
             println("denied - ask user about turning it on")
         case .NotDetermined:
             println("not determined - on first launch")
-            //            self.locationManager.requestWhenInUseAuthorization()
+//            self.locationManager.requestWhenInUseAuthorization()
             self.locationManager.requestAlwaysAuthorization()
         case .Restricted:
             println("restricted")
@@ -142,7 +142,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         case .Authorized, .AuthorizedWhenInUse:
             println("authorized (even when in use)")
             self.mapView.showsUserLocation = true
-            //            self.locationManager.startUpdatingLocation()
+//            self.locationManager.startUpdatingLocation()
         case .Denied:
             println("denied")
         case .NotDetermined:
@@ -193,11 +193,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         var newReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
         newReminder.latitude = annotation.coordinate.latitude
         newReminder.longitude = annotation.coordinate.longitude
-//        if annotation.title! != "Add Reminder" {
-//            newReminder.reminder = Reminder.valueForKeyPath("reminder") as String
-//        } else {
-            newReminder.reminder = annotation.title!
-//        }
+        newReminder.reminder = annotation.title!
         
         println("annLat: \(newReminder.latitude)")
         println("annLong: \(newReminder.longitude)")

@@ -88,11 +88,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="85O-G2-780">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="85O-G2-780">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReminderCell" textLabel="vZx-4j-tc7" detailTextLabel="wcA-qi-BOz" style="IBUITableViewCellStyleSubtitle" id="4L2-el-XHO">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ReminderCell" textLabel="vZx-4j-tc7" detailTextLabel="wcA-qi-BOz" style="IBUITableViewCellStyleSubtitle" id="4L2-el-XHO">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4L2-el-XHO" id="JY6-3f-jtC">
@@ -121,6 +121,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cBN-Le-ttj" firstAttribute="top" secondItem="85O-G2-780" secondAttribute="bottom" id="9EN-W6-bYY"/>
+                            <constraint firstItem="85O-G2-780" firstAttribute="top" secondItem="Tvs-rk-Vrh" secondAttribute="top" id="Vmu-5c-e8T"/>
+                            <constraint firstAttribute="trailing" secondItem="85O-G2-780" secondAttribute="trailing" id="Z5h-hD-qnu"/>
+                            <constraint firstItem="85O-G2-780" firstAttribute="leading" secondItem="Tvs-rk-Vrh" secondAttribute="leading" id="jLE-Y7-N9h"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="B4Q-uT-TaT">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="zXl-h3-URC">
