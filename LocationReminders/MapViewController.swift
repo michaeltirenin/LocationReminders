@@ -14,7 +14,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
 
     var context : NSManagedObjectContext!
     var fetchedResultsController : NSFetchedResultsController!
-    //    var reminder : Reminder!
+    var reminder : Reminder!
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var latitudeTextField: UITextField!
@@ -190,18 +190,26 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         var geoRegion = CLCircularRegion(center: annotation.coordinate, radius: 200, identifier: "Reminder")
         self.locationManager.startMonitoringForRegion(geoRegion)
         
-        var newReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
-        newReminder.latitude = annotation.coordinate.latitude
-        newReminder.longitude = annotation.coordinate.longitude
-        newReminder.reminder = annotation.title!
+        self.reminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
+        self.reminder.latitude = annotation.coordinate.latitude
+        self.reminder.longitude = annotation.coordinate.longitude
+        self.reminder.reminder = annotation.title!
         
-        println("annLat: \(newReminder.latitude)")
-        println("annLong: \(newReminder.longitude)")
-        println("annTitle: \(newReminder.reminder)")
+        println("annLat: \(self.reminder.latitude)")
+        println("annLong: \(self.reminder.longitude)")
+        println("annTitle: \(self.reminder.reminder)")
         
 //        context.save(nil)
         
         self.performSegueWithIdentifier("ToEditReminder", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if segue.identifier == "ToEditReminder" {
+            var editVC = segue.destinationViewController as EditRemindersViewController
+            editVC.reminder = self.reminder
+            
+        }
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
