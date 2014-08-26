@@ -77,12 +77,9 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func configureCell(cell: UITableViewCell, forIndexPath indexPath: NSIndexPath) {
-        var reminder = self.fetchedResultsController.fetchedObjects[indexPath.row] as Reminder
-        cell.textLabel.text = reminder.reminder
-        cell.detailTextLabel.text = "(" + reminder.latitude.stringValue + ", " + reminder.longitude.stringValue + ")"
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        self.selectedReminder = self.fetchedResultsController.fetchedObjects[indexPath.row] as? Reminder
+        cell.textLabel.text = self.selectedReminder!.reminder
+        cell.detailTextLabel.text = "(" + self.selectedReminder!.latitude.stringValue + ", " + self.selectedReminder!.longitude.stringValue + ")"
     }
     
     // MARK: NSFetchedResultsControllerDelegate Methods
@@ -129,6 +126,13 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         deleteAction.backgroundColor = UIColor.redColor()
         
         return [deleteAction]
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if segue.identifier == "ToEditRemindersFromTable" {
+            let editVC = segue.destinationViewController as EditRemindersViewController
+//            editVC.reminder = self.selectedReminder![tableView.indexPathForSelectedRow().row]
+        }
     }
 
 // MARK: Tableview Reorder

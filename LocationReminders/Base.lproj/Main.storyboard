@@ -112,6 +112,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Oz2-rm-qjc" kind="show" identifier="ToEditRemindersFromTable" id="HEy-Vg-HPq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -142,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxC-zn-31I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="687"/>
+            <point key="canvasLocation" x="1789" y="743"/>
         </scene>
         <!--Edit Reminders View Controller-->
         <scene sceneID="nSV-Ka-uJy">
@@ -223,4 +226,7 @@
             <point key="canvasLocation" x="456" y="407"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HEy-Vg-HPq"/>
+    </inferredMetricsTieBreakers>
 </document>
